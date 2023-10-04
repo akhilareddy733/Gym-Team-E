@@ -1,0 +1,73 @@
+<div class="container-fluid">
+    <div class="row banner-image-signup justify-content-center">
+        <div class="col-sm-10 rounded">
+            <div class="row text-center justify-content-center">
+                <div class="col-sm-8">
+                    <h4 class="mt-4 mx-4w-3 text-white">Registration</h4>
+                </div>
+            </div>
+            <form action="" class="mx-4 my-4" #registerForm="ngForm" (ngSubmit)="signup()">
+                <div class="row justify-content-center">
+                    <div class="col-sm-4 text-white">
+                        <div class="form-group">
+                            <label for="fulfname">Full name*</label>
+                            <input type="text" name="fulfname" class="form-control" placeholder="Last name" #fname="ngModel" required [(ngModel)]="fullname" ngModel>
+                            <div class="text-white" *ngIf="fname.invalid && (fname.touched || registerForm.submitted)">
+                                <div *ngIf="fname.errors?.['required']">This field is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Username(Email)*</label>
+                            <input type="email" name="username" #emailadd="ngModel" placeholder="Email address" class="form-control" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="username" ngModel>
+                            <div *ngIf="emailadd.invalid && (emailadd.touched || registerForm.submitted)">
+                                <div class="text-white" *ngIf="emailadd.errors?.['pattern']">Please enter a valid email</div>
+                                <div class="text-white" *ngIf="emailadd.errors?.['required']">This field is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="phonenumber">Phone no.*</label>
+                                <input type="text" name="phonenumber" class="form-control" maxlength="10" minlength="10" placeholder="Phone number" #phonenumber="ngModel" required [(ngModel)]="phoneno" ngModel>
+                                <div class="text-white" *ngIf="phonenumber.invalid && (phonenumber.touched || registerForm.submitted)">
+                                    <div *ngIf="phonenumber.errors?.['required']">This field is required</div>
+                                    <div *ngIf="phonenumber.errors?.['minlength']">Enter valid phone no.</div>
+                                    <div *ngIf="phonenumber.errors?.['maxlength']">Enter valid phone no.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 text-white">
+                        <div class="form-group">
+                            <label for="password1">Password*</label>
+                            <input type="password" name="password1" #pass1="ngModel" placeholder="Password" class="form-control" required pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" [(ngModel)]="password1" ngModel>
+                            <div *ngIf="pass1.invalid && (pass1.touched || registerForm.submitted)">
+                                <div class="text-white" *ngIf="pass1.errors?.['pattern']">This is weak password (Please ensure it contains minimum eight characters, at least one letter, one number and one special character:)</div>
+                                <div class="text-white" *ngIf="pass1.errors?.['required']">This field is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password2">Confirm password*</label>
+                            <input type="password" name="password2" #pass2="ngModel" placeholder="Confirm Password" class="form-control" required pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" [(ngModel)]="password2" ngModel>
+                            <div *ngIf="pass2.invalid && (pass2.touched || registerForm.submitted)">
+                                <div class="text-white" *ngIf="pass2.errors?.['pattern']">This is weak password (Please ensure it contains minimum eight characters, at least one letter, one number and one special character:)</div>
+                                <div class="text-white" *ngIf="pass2.errors?.['required']">This field is required</div>
+                            </div>
+                        </div>
+
+                        <div *ngIf="!(pass2.errors?.['required'])">
+                            <div class="text-white" *ngIf="pass1.value!=pass2.value">
+                                Password should match
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col text-center">
+                        <input type="submit" value="Signup" class="btn btn-primary" [disabled]="!registerForm.valid">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

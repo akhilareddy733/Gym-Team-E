@@ -1,0 +1,18 @@
+.banner-image{
+    background-image:url("https://wallpapertag.com/wallpaper/full/2/2/9/143972-download-free-gym-wallpaper-3200x1200-iphone.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    height: 600px;
+}
+
+.banner-quote{
+    color: bisque;
+    font-size: 45px;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.clicks a{
+    margin: 110px;
+    color:aqua;
+    text-decoration: none;
+}
