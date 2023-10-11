@@ -29,13 +29,23 @@ export class SigninComponent {
         (response)=>{
           this.userLoggedIn = true;
           localStorage.setItem("isUserLoggedIn","true");
+          localStorage.setItem("headers", response.tokens.access)
           this.router.navigate(['/profile']).then(()=>{
             window.location.reload();
           });
           this.loader=false
         },
         (error)=>{
-          alert(error.error.detail)
+          console.log(error.error);
+          if(error.details){
+            alert(error.error.details)
+          }
+          if(error.error.password){
+            alert(JSON.stringify(error.error.password[0]))
+          }
+          if(error.error.detail){
+            alert(error.error.detail)
+          }
           window.location.reload();
           this.router.navigate(['/signin']);
           this.loader=false

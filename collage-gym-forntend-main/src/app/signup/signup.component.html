@@ -67,6 +67,13 @@
                         <input type="submit" value="Signup" class="btn btn-primary" [disabled]="!registerForm.valid">
                     </div>
                 </div>
+                <div class="row mt-4 justify-content-center">
+                    <div class="col-sm-12 text-center">
+                        <div *ngIf="loader==true" class="spinner-border text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

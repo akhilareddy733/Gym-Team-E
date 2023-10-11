@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AllServicesService {
 
-  url = "http://localhost:8000/"
+  url = "https://gymproject-404a72ac42b8.herokuapp.com"
 
   constructor(private http:HttpClient) { }
 
