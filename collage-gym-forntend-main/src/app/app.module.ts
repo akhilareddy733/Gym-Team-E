@@ -6,11 +6,18 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-import { SigninComponent } from './signin/signin.component';
-import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
-import { FormsModule } from '@angular/forms'; 
 import { HttpClientModule } from '@angular/common/http';
+import { ProductComponent } from './product/product.component';
+import { CartComponent } from './cart/cart.component';
+import { VideoComponent } from './video/video.component';
+import { DietplanComponent } from './dietplan/dietplan.component';
+import { UpdateComponent } from './update/update.component';
+import { FormsModule } from '@angular/forms';
+import { Signup2Component } from './signup2/signup2.component';
+import { PaymentComponent } from './payment/payment.component';
+import { SigninComponent } from './signin/signin.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -18,9 +25,16 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
+    ProfileComponent,
+    ProductComponent,
+    CartComponent,
+    PaymentComponent,
+    VideoComponent,
+    DietplanComponent,
+    UpdateComponent,
+    Signup2Component,
     SigninComponent,
-    SignupComponent,
-    ProfileComponent
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,

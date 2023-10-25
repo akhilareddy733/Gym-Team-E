@@ -16,6 +16,9 @@ export class SigninComponent {
   userLoggedIn=false;
 
   constructor(private service:AllServicesService, private router:Router){
+    if(localStorage.getItem("userLoggedIn")=="true"){
+      
+    }
   }
 
   signin(){
@@ -27,16 +30,38 @@ export class SigninComponent {
     if(this.username!=null && this.username!==null && this.username!="" && this.username!=""){
       this.service.userLogin(data).subscribe(
         (response)=>{
+          if(response.tokens.payment_status==true){
+            localStorage.setItem("paymentStatus", "true");
+          }
+          else{
+            localStorage.setItem("paymentStatus", "false");
+          }
+          console.log("response", response)
           this.userLoggedIn = true;
           localStorage.setItem("isUserLoggedIn","true");
           localStorage.setItem("headers", response.tokens.access)
-          this.router.navigate(['/profile']).then(()=>{
-            window.location.reload();
-          });
+          this.loader=true
+          if(response.tokens.gym_membership){
+               localStorage.setItem("gymMembership", 'true')
+            this.router.navigate(['/payment']).then(()=>{
+              window.location.reload();
+            });
+          }else if(response.tokens.gym_membership){
+               localStorage.setItem("gymMembership", 'false')
+            this.router.navigate(['/profile']).then(()=>{
+              window.location.reload();
+            });
+          }
+          else{
+               localStorage.setItem("gymMembership", 'false')
+            this.router.navigate(['/profile']).then(()=>{
+              window.location.reload();
+            });
+          }
+          
           this.loader=false
         },
         (error)=>{
-          console.log(error.error);
           if(error.details){
             alert(error.error.details)
           }
