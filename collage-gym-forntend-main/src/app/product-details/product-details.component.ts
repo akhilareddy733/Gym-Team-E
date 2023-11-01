@@ -2,6 +2,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { AllServicesService } from '../service/all-services.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-details',
@@ -36,17 +37,18 @@ export class ProductDetailsComponent {
       'Authorization': `Bearer ${key}`
     });
     
-    // this.service.getProductDetails(headers, this.productId).subscribe(
-    //   (response)=>{
-    //     this.loader=false;
-    //     this.productDetails = response;
-    //     if(response.id){
-    //       this.productDetails = response
-    //     }
-    //   },(error)=>{
-    //     alert(error.status + " " + error.statusText )
-    //   }
-    // )
+    this.service.getProductDetails(headers, this.productId).subscribe(
+      (response)=>{
+        this.loader=false;
+        this.productDetails = response;
+        console.log(response)
+        if(response.id){
+          this.productDetails = response
+        }
+      },(error)=>{
+        alert(error.status + " " + error.statusText )
+      }
+    )
   }
 
   addProduct(itemId:any){
@@ -64,9 +66,9 @@ export class ProductDetailsComponent {
     this.service.addProduct(product_id, headers).subscribe(
       (response)=>{
         if(response.message){
-          console.log('response', response)
           this.successMsg=true
           this.loader=false
+          this.successAlert();
         }
         this.loader=false
         setTimeout(() => {
@@ -85,6 +87,14 @@ export class ProductDetailsComponent {
     );
     
     console.log("loader :", this.loader);
+  }
+
+  successAlert(){
+    Swal.fire({
+      title: 'Product Added To Cart',
+      icon: 'success',
+      confirmButtonText: 'OK'
+    });
   }
 
 

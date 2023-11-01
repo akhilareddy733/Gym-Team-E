@@ -58,7 +58,7 @@ export class AllServicesService {
   }
   
   updateProfile(daa:any, headers:any){
-    return this.http.patch<any>(`${this.url}/account/update-profile/`, {headers})
+    return this.http.put<any>(`${this.url}/account/update-profile/`, {headers})
   }
 
   getPaymentStatus(headers:any){
@@ -66,15 +66,15 @@ export class AllServicesService {
   }
 
   getProductDetails(headers:any, productid:any){
-    return this.http.get<any>(`${this.url}/ecomerce/product/${productid}`, {headers})
+    return this.http.get<any>(`${this.url}/ecomerce/product/${productid}/`, {headers})
   }
 
   removeItems(headers:any, productid:any){
     return this.http.delete<any>(`${this.url}/ecomerce/order/${productid}/`, {headers})
   }
-  
 
-  
-  
+  deleAllAfterPayment(headers:any){
+    return this.http.delete<any>(`${this.url}/ecomerce/order/`, {headers});
+  }
 
 }

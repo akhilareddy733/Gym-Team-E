@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class HomeComponent {
 
   constructor(){
+
     const currentURL = window.location.href;
     console.log(currentURL);
     const protocol = window.location.protocol;

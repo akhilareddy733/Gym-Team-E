@@ -19,6 +19,7 @@ export class NavbarComponent {
   noOfItemsInCart:any;
   allOrders:any;
   paymentStatus:any=false;
+  location:any="";
 
   constructor(private router: Router, private service:AllServicesService){
     if(localStorage.getItem("isUserLoggedIn")=="true"){
@@ -29,6 +30,8 @@ export class NavbarComponent {
     }if(localStorage.getItem("paymentStatus")=="true"){
       this.paymentStatus=true
     }
+    this.location=window.location.pathname
+    console.log(this.location + " location ")
   }
 
   ngOnInit(): void {
@@ -56,11 +59,14 @@ export class NavbarComponent {
     localStorage.removeItem("paymentStatus");
     localStorage.removeItem("productOrderPayment");
     localStorage.removeItem("address");
-    localStorage.removeItem("pincode");
-
+    
     this.router.navigate(['/home'])
     window.location.reload();
   }
+
+
+
+  
   
 
 }

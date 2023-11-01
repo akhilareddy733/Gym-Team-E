@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="row mt-5 justify-content-center text-cener">
+        <div class="col-sm-12">
+            <header>
+                <h1>Payment Gateway</h1>
+            </header>
+            <main>
+                <div class="payment-form">
+                    <div class="razorpay-logo">
+                        <img src="assets/image/razorpay-logo.jpg" width="200px" alt="Razorpay Logo" class="razorpay-logo">
+                    </div>
+                    <form id="payment-form" #paymentform="ngForm" (ngSubmit)="makePayment()">
+                        <label for="card-number">Card Number</label>
+                        <input type="text" id="card-number" name="cardno" maxlength="12" minlength="12" placeholder="1234 5678 9012 3456" required [(ngModel)]="cardno" ngModel>
+            
+                        <label for="expiry">Expiry Date</label>
+                        <input type="text" id="expiry" maxlength="5" name="expirtydate" minlength="5" placeholder="MM/YY" required [(ngModel)]="expirtydate" ngModel>
+            
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" maxlength="3" minlength="3" name="cvv" placeholder="123" required [(ngModel)]="cvv" ngModel>
+            
+                        <label for="amount">Amount</label>
+                        <input *ngIf="gymMemberShipPay" type="text" id="amount" [disabled]="true" value="100" name="amount" required [(ngModel)]="price" ngModel>
+                        
+                        <input *ngIf="!gymMemberShipPay" type="text" id="amount" [disabled]="true" value="{{amount}}" name="amount" required [(ngModel)]="amount" ngModel>
+            
+                        <input class="pay-button" type="submit" value="Pay" class="btn btn-primary" [disabled]="!paymentform.valid">
+                    </form>
+                </div>
+            </main>
+            
+        </div>
+    </div>
+</div>

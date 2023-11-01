@@ -142,16 +142,41 @@ export class PaymentComponent {
         this.loader=false;
         if(response){
           localStorage.setItem("paymentStatus", "true")
-          console.log("response is ", response)
           alert(response.message)
           alert("Your payment id :" + " " + response.data.id)
-          this.router.navigate(['/home']).then(() => {
-            window.location.reload();
-          });
+          alert("Your order is successfull")
+          this.loader=true;
+          this.deleteAllCartItems();
+          setTimeout(() => {
+            this.router.navigate(['/home']).then(() => {
+              window.location.reload();
+            });
+          }, 2000);
         }
       },(error)=>{
         console.log("error is:", error)
         alert(error.status + " " + error.statusText)
+      }
+    )
+  }
+
+  deleteAllCartItems(){
+    this.loader = true;
+    const key = localStorage.getItem("headers")
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${key}`
+    });
+    
+    this.service.deleAllAfterPayment(headers).subscribe(
+      (response)=>{
+        console.log(response)
+        if(response){
+          console.log(response)
+        }else{
+          this.loader=false
+        }
+      },(error)=>{
+        this.loader=false
       }
     )
   }

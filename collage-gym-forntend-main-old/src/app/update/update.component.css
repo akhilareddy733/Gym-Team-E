@@ -1,0 +1,46 @@
+.banner-image-signup{
+    background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url("https://wallpapercrafter.com/desktop/20843-dumbbells-gym-weight-disks-4k.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    height: 600px;
+}
+
+.subscriptionType-choice-imgage{
+    width: 300px;
+    height: 200px;
+}
+
+.member-ship-type-title{
+    margin-top: 100px;
+    color: #451952;
+    font-size: 30px;
+}
+
+.member-ship-type{
+    text-decoration: none;
+    color:black;
+}
+
+.row{
+    font-family:"font-family: Verdana, Arial, sans-serif;"
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: #FF3D00;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+} 

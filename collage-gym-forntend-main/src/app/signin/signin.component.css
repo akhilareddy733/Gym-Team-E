@@ -1,8 +1,8 @@
 .banner-image-signup{
-    background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url("https://wallpapercrafter.com/desktop/20843-dumbbells-gym-weight-disks-4k.jpg");
+    background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url("https://img.freepik.com/premium-photo/young-happy-beautiful-girl-wearing-black-sporwear-practicing-sport-exercises-morning-street-celebrate-result-training-jumping-full-length-orange-wall-background-outdoor_416530-18513.jpg");
     background-repeat:no-repeat;
     background-size:cover;
-    height: 600px;
+    height: 700px;
 }
 
 .subscriptionType-choice-imgage{
@@ -44,3 +44,28 @@
         transform: rotate(360deg);
     }
 } 
+
+.signin-label{
+    text-align: center;
+    color: #E55604;
+    font-family: "Montserrat", Sans-serif;
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 34px;
+}
+
+label{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.signin{
+    color: #98E4FF;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.button-btn{
+    width: 150px;
+    border-radius: 5px;
+    color:#451952;
+    background-color:cyan!important;
+}

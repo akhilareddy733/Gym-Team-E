@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AllServicesService } from '../service/all-services.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup2',
@@ -32,7 +33,8 @@ export class Signup2Component {
     this.service.userRegistration(data).subscribe(
       (response)=>{
         if(response.id){
-          alert("Registration successful")
+          // alert("Registration successful")
+          this.AlertMsg("Registration successful", "success")
           this.loader=false
           this.router.navigate(['/signin']);
         }
@@ -41,13 +43,16 @@ export class Signup2Component {
       (error)=>{
 
         if(error.error.email==undefined){
-          alert(error.error.phone_no)
+          // alert(error.error.phone_no)
+          this.AlertMsg(error.error.phone_no, "error")
         }
         else if(error.error.phone_no==undefined){
-          alert(error.error.email)
+          // alert(error.error.email)
+          this.AlertMsg(error.error.email, "error")
         }
         else{
           alert(error.error.email + " \n " + error.error.phone_no)
+          this.AlertMsg(error.error.email + " \n " + error.error.phone_no, "error")
         }
         window.location.reload();
         this.router.navigate(['/signup']);
@@ -65,5 +70,13 @@ export class Signup2Component {
     }else{
       this.subscriptionTypePayload=false
     }
+  }
+
+  AlertMsg(msg:any, icontype:any){
+    Swal.fire({
+      title: msg,
+      icon: icontype,
+      confirmButtonText: 'OK'
+    });
   }
 }

@@ -1,0 +1,24 @@
+<div class="header-title">
+    <h1>Video</h1>
+</div>
+<div class="video-gallery">
+    <div class="row justify-content-center text-center">
+        <span class="loader" *ngIf="loader"></span>
+    </div>
+    <div *ngFor="let videoitem of videoExcersiseDetails">
+        <div class="video-card">
+            <video controls>
+                <source src="{{videoitem.videos}}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <p></p>
+            <p>
+                <img class="img" src="{{videoitem.images1}}" width="200px" height="150px" alt="">
+                <img class="img" src="{{videoitem.images2}}" width="200px" height="150px" alt="">
+                <img class="img" src="{{videoitem.images3}}" width="200px" height="150px" alt="">
+                <img class="img" src="{{videoitem.images4}}" width="200px" height="150px" alt="">
+            </p>
+        </div>
+    </div>
+    <!-- Add more video cards as needed -->
+</div>

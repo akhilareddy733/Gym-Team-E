@@ -1,54 +1,4 @@
-/* Add your CSS styles here */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-}
-
-.diet-plan {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-.diet-video {
-    width: 40%;
-    padding: 10px;
-}
-
-.diet-video video {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-
-.diet-info {
-    width: 60%;
-    padding: 10px;
-}
-
-h2 {
-    font-size: 20px;
-    margin: 0;
-}
-
-p {
-    font-size: 16px;
-    margin: 0;
-}
-
-.header-title {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
-
+/* loader style */
 .loader {
     width: 48px;
     height: 48px;
@@ -58,7 +8,6 @@ p {
     display: inline-block;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
-    margin-top: 200px;
 }
 
 @keyframes rotation {
@@ -69,3 +18,69 @@ p {
         transform: rotate(360deg);
     }
 } 
+
+/* header background */
+.diet-plan-header{
+    width: 100%;
+    height: 100vh;
+    background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) ,url("https://www.healthkart.com/connect/wp-content/uploads/2016/07/banner-6.jpg");
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.diet-plan-header-title-and-desc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .diet-plan-header-title {
+    font-size: 24px; /* Adjust the font size as needed */
+    margin: 0; /* Remove default margin to align text at the center */
+    margin-top: 300px;
+    font-family: "Montserrat", Sans-serif;
+    color: #FFF;
+  }
+  
+  .diet-plan-header-desc {
+    font-size: 16px; /* Adjust the font size as needed */
+    margin: 0; /* Remove default margin to align text at the center */
+    width: 70%;
+    font-family: Century Gothic;
+    color: #FF9045;
+  }
+  
+
+  /* diet plan header title and desc animation */
+.animate {
+    animation: fadeUp 2s both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(90px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* diet plan content */
+.dietPlans-main-content{
+    width: 100%;
+    background-image:url("https://4kwallpapers.com/images/walls/thumbs_3t/8324.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.text-truncate {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%; /* or set a specific width if needed */
+  }

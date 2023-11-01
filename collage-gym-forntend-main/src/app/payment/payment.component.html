@@ -1,5 +1,10 @@
 <div class="container-fluid">
-    <div class="row mt-5 justify-content-center text-cener">
+    <div class="row justify-content-center text-center">
+        <div class="col-sm-12">
+            <span class="loader" *ngIf="loader"></span>
+        </div>
+    </div>
+    <div *ngIf="!loader" class="row justify-content-center text-cener">
         <div class="col-sm-12">
             <header>
                 <h1>Payment Gateway</h1>

@@ -1,24 +1,84 @@
-<div class="header-title">
-    <h1>Video</h1>
+<!-- <div class="product-header">
+    <div class="product-header-title-and-desc animate">
+        <h5 class="product-heaer-title">Choose Our Best Products For You</h5>
+        <p class="product-heaer-desc">"A gym is a fitness facility equipped with exercise equipment and facilities for individuals to engage in physical workouts and improve their overall health and fitness."</p>
+    </div>
 </div>
-<div class="video-gallery">
+
+<div class="container-fluid mt-5">
     <div class="row justify-content-center text-center">
         <span class="loader" *ngIf="loader"></span>
     </div>
-    <div *ngFor="let videoitem of videoExcersiseDetails">
-        <div class="video-card">
-            <video controls>
-                <source src="{{videoitem.videos}}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <p></p>
-            <p>
-                <img class="img" src="{{videoitem.images1}}" width="200px" height="150px" alt="">
-                <img class="img" src="{{videoitem.images2}}" width="200px" height="150px" alt="">
-                <img class="img" src="{{videoitem.images3}}" width="200px" height="150px" alt="">
-                <img class="img" src="{{videoitem.images4}}" width="200px" height="150px" alt="">
-            </p>
+    <div class="row justify-content-center" *ngIf="!loader">
+        <div class="col-sm-10">
+            <div class="row justify-content-center">
+                <div class="card mb-4">
+                    <a routerLink="/product-details/">
+                        <div class="product-image image-hover-animation">
+                            <div class="product-header">
+                                
+                              </div>
+                        </div>
+                        <h1 class="product-name"></h1>
+                        <p class="product-price">$19.99</p>
+                    </a>
+                    <p class="product-description"></p>
+                  </div>
+            </div>
         </div>
     </div>
-    <!-- Add more video cards as needed -->
 </div>
+
+
+ -->
+
+
+<div class="video-header">
+    <video autoplay loop muted playsinline>
+        <source
+            src="https://v4.cdnpk.net/videvo_files/video/free/video0460/large_watermarked/_import_60cd8646054bc3.82890625_FPpreview.mp4"
+            type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="text-overlay">
+        <h1 class="animate">"We offer a comprehensive collection of gym exercise videos that enable you to elevate your
+            fitness journey. Our video library provides expert guidance on a wide range of exercises, catering to
+            various fitness levels and goals. Whether you're a beginner looking to kickstart your fitness routine or an
+            experienced gym enthusiast seeking to diversify your workouts, our gym exercise videos are designed to
+            inspire and motivate you on your path to a healthier, stronger you."</h1>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="row mt-4 justify-content-center text-center">
+        <span class="loader" *ngIf="loader"></span>
+    </div>
+    <div class="row justify-content-center" *ngIf="!loader">
+        <div *ngFor="let items of videoExcersiseDetails" class="col-sm-10 product-details-card">
+            <div class="row mb-5">
+                <div class="col-sm-8">
+                    <video class="animate" autoplay loop muted playsinline width="100%">
+                        <source
+                            src="{{items.videos}}">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="col-sm-4 video-ss animate">
+                    <div class="image-hover-animation">
+                        <img width="100%" class="border border-dark" height="200px" src="{{items.images2}}" alt="">
+                    </div>
+                    <div class="image-hover-animation">
+                        <img width="100%" class="border border-dark" height="200px" src="{{items.images1}}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<audio autoplay>
+    <source src="assets/audio/drive-breakbeat-173062.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>

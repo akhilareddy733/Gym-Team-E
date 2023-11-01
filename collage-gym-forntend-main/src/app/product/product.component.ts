@@ -2,6 +2,7 @@ import { Component, ElementRef, Input } from '@angular/core';
 import { AllServicesService } from '../service/all-services.service';
 import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product',
@@ -16,16 +17,16 @@ export class ProductComponent {
   successMsg:any;
   noOfItemsInCart:any;
   allOrders:any;
-  address:any;
-  addresspincode:any;
+  address:any="";
+  validAddress: any=false;
 
 
   constructor(private service:AllServicesService,
     private router:Router,
     private el: ElementRef){
-      
     if(localStorage.getItem("isUserLoggedIn")=="true"){
       this.getProducts();
+      
     }
     else{
       router.navigate(["/"]);
@@ -60,25 +61,31 @@ export class ProductComponent {
   }
 
 
-  getAddressDetails(){
-    if(this.address=="" || this.address==null || this.address==undefined){
-      this.address = prompt("Please enter delivery address")
-      if(this.address!="" && (this.addresspincode=="" || this.addresspincode==null || this.addresspincode==undefined)){
-        this.addresspincode = prompt("Please enter delivery pincode")
-      }
+   getAddressDetails(){
+
+    this.address = prompt("Please enter delivery address")
+
+    if(this.address=="" || this.address==null || this.address=="undefined"){
+      // this.addressDetailArePresent=false;
+      this.AlertMsg("Please enter a valid address and pincode", 'error')
+      this.constructor();
     }
-    localStorage.removeItem("address")
-    localStorage.removeItem("pincode")
     localStorage.setItem("address", this.address)
-    localStorage.setItem("pincode", this.addresspincode)
   }
 
 
-  addProduct(itemId:any){
+  async addProduct(itemId:any){
 
-    if(localStorage.getItem("address")=="" || localStorage.getItem("pincode")=="" || localStorage.getItem("address")==null || localStorage.getItem("pincode")==null || localStorage.getItem("pincode")=="undefined" || localStorage.getItem("address")=="undefined" ){
-      this.getAddressDetails()
+    console.log("address local :", localStorage.getItem("address"))
+
+    if(localStorage.getItem("address")=="" || localStorage.getItem("address")=="null"  || localStorage.getItem("address")=="undefined" || localStorage.getItem("address")==null || localStorage.getItem("address")==undefined){
+      await this.inputPrompt1("msg")
     }
+
+    // if(this.validAddress!=false){
+    //   this.AlertMsg("Please enter a valid address and pincode", 'error')
+    //   this.constructor();
+    // }
 
     console.log("itme id :", itemId)
     this.loader=true
@@ -99,6 +106,7 @@ export class ProductComponent {
           console.log('response', response)
           this.successMsg=true
           this.loader=false
+          this.AlertMsg("Product Added To Cart", 'success');
         }
         this.loader=false
         setTimeout(() => {
@@ -120,4 +128,43 @@ export class ProductComponent {
   }
 
 
+  AlertMsg(msg:any, icontype:any){
+    Swal.fire({
+      title: msg,
+      icon: icontype,
+      confirmButtonText: 'OK'
+    });
+  }
+
+
+  inputPrompt(msg:any){
+    let val = this.inputPrompt1("some msg")
+    console.log("val :",val)
+  }
+
+  async inputPrompt1(msg:any) {
+    const { value: text } = await Swal.fire({
+      input: 'textarea',
+      inputLabel: 'Message',
+      inputPlaceholder: 'Enter your address',
+      inputAttributes: {
+        'aria-label': 'Type your message here'
+      },
+      showCancelButton: true
+    });
+  
+    if (!text) {
+      this.AlertMsg("Please enter a valid address", "info");
+      this.constructor();
+    }
+    localStorage.setItem("address", text)
+    console.log("msg :", text)
+    return text;
+    
+  }
+  
+
+
 }
+
+

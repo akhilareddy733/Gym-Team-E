@@ -1,23 +1,251 @@
-.banner-image{
-    background-image:url("https://wallpapercave.com/wp/wp2482998.jpg");
-    background-repeat:no-repeat;
-    background-size:cover;
-    height: 600px;
-}
 
-.banner-quote{
-    color: bisque;
+
+/* ------------------------------------------------------------------------------------------------- */
+
+.carousel-item {
+    height: 100vh;
+    min-height: 300px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  .carousel-caption {
+    bottom: 200px;
+  }
+
+  .first-caption{
+    bottom: 150px;
+  }
+  
+  .carousel-caption h5 {
     font-size: 45px;
-    font-family:'Times New Roman', Times, serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 25px;
+  }
+  
+  .carousel-caption p {
+    width: 75%;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.9;
+  }
+  
+
+
+  /* body */
+/* my css */
+h5{
+  color: #FF9045;
 }
 
-.clicks a{
-    margin: 110px;
-    color:aqua;
-    text-decoration: none;
+.banner-image-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  pointer-events: none; /* This ensures the gradient doesn't interfere with clicks on the image */
 }
 
-img{
-    width: 100%;
-    
+/* first banner animation */
+.animate-charcter{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  /* text-fill-color: transparent; */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+      font-size: 190px;
+}
+
+.animate-charcter{
+  font-size: 100px!important;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* end first banner animation */
+
+
+/* memebership*/
+.heading{
+  color: #FF9045;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 22px;
+}
+
+.desc{
+  font-family: Century Gothic;
+  color: #0C356A;
+}
+
+.banner-desc{
+  font-family: Century Gothic;
+  color: #fff;
+}
+
+.whyus{
+  text-align: center;
+  color: #E55604;
+  font-family: "Montserrat", Sans-serif;
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 34px;
+}
+
+.outproducts{
+  text-align: center;
+  color: #E55604;
+  font-family: "Montserrat", Sans-serif;
+  font-size: 34px;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 34px;
+}
+
+.social-media-group{
+  padding: 20px;
+}
+
+.social-media-logo{
+  font-size: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.fb{
+  color: #1877F2;
+}
+
+.insta{
+  color:linear-gradient(135deg, #C32AA3, #F56040, #FFC837)
+}
+
+.twitter{
+  color: #1DA1F2;
+}
+
+.playstore{
+  color: #34A853;
+}
+
+/* home page image animation */
+.home-page-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.home-page-image img {
+  transition: transform 0.4s;
+}
+
+.home-page-image .image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Add an overlay to the image */
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.home-page-image:hover img {
+  transform: scale(1.1); /* Apply inner transformation to the image */
+}
+
+.home-page-image:hover .image-overlay {
+  opacity: 1; /* Show the overlay on hover */
+}
+
+
+/* logo animation */
+.social-media-logos{
+  transition: transform .4s; 
+}
+.social-media-logos:hover{
+  transform: scale(2); 
+  text-decoration: none;
+}
+
+/* loader */
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: #FF3D00;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  margin-top: 200px;
+}
+
+@keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+} 
+
+/* home page banner animation */
+  /* product header title and desc animation */
+.animate {
+    animation: fadeUp 2s both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(90px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.animate-desc{
+  animation: fadeUp 3s both;
+}
+
+@keyframes fadeUp {
+  from {
+      opacity: 0;
+      transform: translateY(120px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.button-btn{
+  text-decoration: none;
+  width: 100%;
+  background-color: #F94C10;
 }

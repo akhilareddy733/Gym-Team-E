@@ -1,37 +1,37 @@
-<div class="container-fluid">
+<div class="member-ship-type-selection" *ngIf="!subscriptionType">
     <div class="row justify-content-center" *ngIf="subscriptionType=='' ">
         <div class="col-sm-10 text-center">
-            <p class="member-ship-type-title">Select membership type</p>
+            <p class="member-ship-type-title animate">Select membership type</p>
         </div>
     </div>
-    <div class="row justify-content-center" *ngIf="subscriptionType=='' ">
+    <div class="row  mt-4 justify-content-center" *ngIf="subscriptionType=='' ">
         <div class="col-sm-4 text-center">
             <a routerLink="/signup" class="member-ship-type" (click)="subscriptionPlan('gymMemberShip')">
-                <img class="subscriptionType-choice-imgage rounded shadow-lg" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zml0bmVzcyUyMGd5bXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" >
+                <img class="subscriptionType-choice-imgage rounded shadow-lg animate" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zml0bmVzcyUyMGd5bXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" >
                 <br>
-            <p for="">Gym member ship</p>
+            <p for="" class="animate">Gym member ship</p>
             </a>
         </div>
         <div class="col-sm-4 text-center">
             <a routerLink="/signup" class="member-ship-type" (click)="subscriptionPlan('gymFitness')">
-                <img class="subscriptionType-choice-imgage rounded shadow-lg" src="https://www.fitness-world.in/wp-content/uploads/2022/01/5-Reasons-Why-Your-Residential-Building-Needs-a-Professional-Gym-Banner-1200x620.jpg" >
+                <img class="subscriptionType-choice-imgage rounded shadow-lg animate" src="https://www.fitness-world.in/wp-content/uploads/2022/01/5-Reasons-Why-Your-Residential-Building-Needs-a-Professional-Gym-Banner-1200x620.jpg" >
                 <br>
-            <p for="">Gym fitness</p>
+            <p for="" class="animate">Gym fitness</p>
             </a>
         </div>
     </div>
+</div>
 
 
-
-    <div *ngIf="subscriptionType!='' " class="row banner-image-signup justify-content-center">
-        
-        <div class="col-sm-10 rounded">
+<div class="container-fluid">
+    <div *ngIf="subscriptionType" class="row banner-image-signup justify-content-center">
+        <div class="col-sm-10 mt-5 rounded">
             <div class="row mt-4 justify-content-center text-center">
                 <span class="loader" *ngIf="loader"></span>
             </div>
             <div class="row text-center justify-content-center">
                 <div class="col-sm-8">
-                    <h4 class="mt-4 mx-4w-3 text-white">Registration</h4>
+                    <h4 class="mt-4 mx-4w-3 register-label">Registration</h4>
                 </div>
             </div>
             <form action="" class="mx-4 my-4" #registerForm="ngForm" (ngSubmit)="signup()">
@@ -88,8 +88,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-center mb-3">
-                    <div class="col-sm-8 text-center text-white">
+                <div class="row justify-content-center mb-5">
+                    <input type="submit" value="Signup" class="btn btn-primary button-btn button-hover" [disabled]="!registerForm.valid">
+                </div>
+                <div class="row justify-content-center">
+                    <div class="member-ship-type text-centers">
                         <span>Membership type :</span>
                         <span *ngIf="subscriptionType=='gymMemberShip' ">
                             Gym emberShip
@@ -99,14 +102,11 @@
                         </span>
                     </div>
                 </div>
-                <div class="row justify-content-center">
+                <div class="row signup justify-content-center">
                     <div class="col text-center">
-                        <input type="submit" value="Signup" class="btn btn-primary" [disabled]="!registerForm.valid">
-                        <br>
-                        <span class="text-white">Already have an account ?<a  routerLink="/signin" id="toggleInfo">Signin</a></span>
+                        <span class="">Already have an account ?<a  routerLink="/signin" id="toggleInfo">Signin</a></span>
                     </div>
                 </div>
-                
             </form>
         </div>
     </div>

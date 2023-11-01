@@ -1,8 +1,16 @@
 .banner-image-signup{
-    background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url("https://wallpapercrafter.com/desktop/20843-dumbbells-gym-weight-disks-4k.jpg");
+    background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url("https://images.ctfassets.net/drib7o8rcbyf/392LGRouJnZqkVu54vkOcs/3d2e2f74c0fa2232b3a7fa3f695f01fc/Running.jpg?fm=jpg&fl=progressive&fit=fill&w=640");
     background-repeat:no-repeat;
     background-size:cover;
-    height: 600px;
+    height: 700px;
+}
+
+.member-ship-type-selection{
+    background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) , url("https://img.freepik.com/premium-photo/illustration-fitness-equipments-design-background_916191-36121.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    height: 700px;
+    width: 100%;
 }
 
 .subscriptionType-choice-imgage{
@@ -11,9 +19,13 @@
 }
 
 .member-ship-type-title{
-    margin-top: 100px;
-    color: #451952;
-    font-size: 30px;
+    text-align: center;
+    color: #FAF2D3;
+    font-family: "Montserrat", Sans-serif;
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 34px;
+    margin-top: 150px;
 }
 
 .member-ship-type{
@@ -44,3 +56,46 @@
         transform: rotate(360deg);
     }
 } 
+
+.register-label{
+    text-align: center;
+    color: #E55604;
+    font-family: "Montserrat", Sans-serif;
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 34px;
+}
+
+label{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.member-ship-type, .signup{
+    color: #98E4FF;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+.button-btn{
+    width: 150px;
+    border-radius: 5px;
+    color:#451952;
+    background-color:cyan!important;
+}
+
+
+/* membership type selection animation */
+.animate {
+    animation: fadeUp 2s both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(90px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

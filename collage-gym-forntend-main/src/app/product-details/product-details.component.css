@@ -1,10 +1,94 @@
-.img-card{
-    text-align: center;
-    align-items: center;
+/* loader style */
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: #FF3D00;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    margin-top: 200px;
 }
 
-.add-to-cart{
-    text-align: center;
-    align-items: center;
-    margin-bottom: 10px;
-  }
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+} 
+
+
+
+  /* my css */
+.product-details-header{
+    width: 100%;
+    background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) ,url("https://e0.pxfuel.com/wallpapers/37/754/desktop-wallpaper-cool-website-background-best-background.jpg");
+    height: 700px;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+
+/* product details show */
+
+.product-details-card{
+    margin-top: 100px;
+    background-color: #fff;
+    border-radius: 9px;
+    border: 1px solid black;
+    height: 500px;
+    margin-right: 0;
+}
+
+
+/* left side details */
+.product-image{
+    width: 200px;
+    margin-top: 50px;
+    padding: 30px;
+}
+
+.product-name{
+    font-size: 20px; 
+    font-family: "Montserrat", Sans-serif;
+    font-weight: bold;
+}
+
+/* right side details */
+.product-details-right{
+    margin-top: 50px;
+}
+
+.product-details-right > div{
+    padding: 10px;
+}
+
+
+
+/* add to cart btn */
+.btn-container{
+    padding-top: 40px;
+}
+
+.button-btn{
+    width: 40%;
+}
+
+
+.animate {
+    animation: fadeUp 2s both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(90px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

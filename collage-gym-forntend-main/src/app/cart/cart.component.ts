@@ -53,6 +53,7 @@ export class CartComponent {
         if(response[0]){
           this.loader=false;
           this.allOrders = response;
+          console.log("orders :" + JSON.stringify(this.allOrders));
           this.orderId=response[0].id
           this.noOfItemsInCart=response.length;
           this.deliveryDetails=response[0].user

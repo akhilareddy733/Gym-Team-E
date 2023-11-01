@@ -1,0 +1,33 @@
+<header>
+    <h1>Our Products</h1>
+</header>
+<div class="row justify-content-center text-center">
+    <span class="loader" *ngIf="loader"></span>
+</div>
+
+<div class="row justify-content-center text-center">
+    <span class="successMsg rounded" *ngIf="successMsg">Product added to cart</span>
+</div>
+<main *ngIf="!loader">
+    <div *ngFor="let items of products">
+        <div class="row justify-content-center text-center">
+            <div class="col-sm-12">
+                <div class="card mb-4 text-center" style="width: 18rem;">
+                    <div class="img-card">
+                        <img class="my-2" style="width: 100px; height: 150px;" src="{{items.image}}" alt="Card image cap">
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title desc">{{items.name}}</h5>
+                      <p class="card-text desc">{{items.description}}
+                        <p class="lcard-text desc">{{items.healine}}</p>
+                      <p class="card-text desc">{{items.details}}</p>
+                    </div>
+                    <div class="read-more-btn">
+                        <a routerLink="/product-details/{{items.id}}" class="btn btn-primary w-30 mx-2">Read more</a>
+                        <a (click)="addProduct(items.id)" class="btn btn-primary w-30 mx-2">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

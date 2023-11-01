@@ -1,54 +1,57 @@
-/* Add your CSS styles here */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
+
+
+/* header title and desc animation */
+.animate {
+    animation: fadeUp 2s both;
 }
 
-.video-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(90px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.video-card {
-    width: 800px;
-    margin: 10px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    overflow: hidden;
-}
 
-video {
+/* video header title and desc */
+
+.video-header {
     width: 100%;
-    height: auto;
-}
-
-
-.add-to-cart {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.header-title {
-    background-color: #333;
-    color: #fff;
+    height: 500px;
+    position: relative; /* Make the container relative for absolute positioning of the overlay */
+    overflow: hidden;
+  }
+  
+  .video-header video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .text-overlay {
+    position: absolute;
+    top: 400px; /* Adjust to vertically center the text */
+    left: 50%; /* Adjust to horizontally center the text */
+    transform: translate(-50%, -50%); /* Center the text both horizontally and vertically */
     text-align: center;
-    padding: 20px 0;
-}
+    color:azure; /* Text color */
+    padding: 20px; /* Padding around the text */
+    width: 70%;
+    font-family: Century Gothic;
+  }
+  
+  .text-overlay h1 {
+    font-size: 15px;
+    margin-top: 0;
+  }
+  
 
-.images{
-    padding: 5px;
-    border: 1px solid #333;
-}
-
-.loader {
+  /* loader */
+  .loader {
     width: 48px;
     height: 48px;
     border: 5px solid #FFF;
@@ -57,7 +60,6 @@ video {
     display: inline-block;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
-    margin-top: 200px;
 }
 
 @keyframes rotation {
@@ -69,3 +71,6 @@ video {
     }
 } 
 
+.video-ss>div{
+  padding-bottom: 10px;
+}
