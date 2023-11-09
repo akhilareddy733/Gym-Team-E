@@ -9,9 +9,6 @@ import { HttpHeaders } from '@angular/common/http';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-
-
-
   
   profileDetails:any;
   loader:any=false;
@@ -27,6 +24,7 @@ export class ProfileComponent {
   }
 
 
+  // automatically called
   getProfileDetails(){
     this.loader = true;
     const key = localStorage.getItem("headers")
@@ -46,8 +44,9 @@ export class ProfileComponent {
         alert(error.status + " " + error.statusText )
       }
     )
-
-    
   }
+
+
+
 
 }

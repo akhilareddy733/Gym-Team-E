@@ -20,6 +20,16 @@ export class CartComponent {
   paymentDetails:any="";
   orderId: any="";
   cartEmpty:any=true; 
+
+
+  addressline1:any;
+  addressline2:any;
+  state:any;
+  city:any;
+  country:any;
+  pincode:any;
+
+
   address:any;
   addresspincode:any;
 
@@ -36,10 +46,32 @@ export class CartComponent {
   }
 
   getAddressDetails(){
-    this.address = localStorage.getItem("address")
-    this.addresspincode = localStorage.getItem("pincode")
+    
+    this.loader = true;
+
+    const key = localStorage.getItem("headers")
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${key}`
+    });
+
+    this.service.getProfileDetails(headers).subscribe(
+      (response)=>{
+        this.loader=false;
+        console.log("profile details :", response)
+        if(response){
+          this.addressline1=response.delivery_address,
+          this.country=response.country,
+          this.city=response.city,
+          this.state=response.state,
+          this.pincode=response.delivery_address_pincode
+        }
+      },(error)=>{
+        alert(error.status + " " + error.statusText)
+      }
+    )
   }
 
+  // get orders to display
   getOrders(){
     this.loader = true;
     const key = localStorage.getItem("headers")
@@ -54,6 +86,10 @@ export class CartComponent {
           this.loader=false;
           this.allOrders = response;
           console.log("orders :" + JSON.stringify(this.allOrders));
+
+          console.log(response[0])
+          this.getAddressDetails();
+
           this.orderId=response[0].id
           this.noOfItemsInCart=response.length;
           this.deliveryDetails=response[0].user
@@ -78,8 +114,39 @@ export class CartComponent {
     }
   }
 
+  addAddressToUser(){
+    this.loader = true;
+
+    const key = localStorage.getItem("headers")
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${key}`
+    });
+
+    const addressData={
+      delivery_address:this.addressline1,
+      delivery_address_pincode:this.pincode,
+      country:this.country,
+      state:this.state,
+      city:this.city,
+    }
+
+    this.service.saveAddressToUser(addressData, headers).subscribe(
+      (response)=>{
+        this.loader=false;
+        console.log(response)
+        if(response){
+          this.paymentCheckout()
+        }
+      },(error)=>{
+        alert(error.status + " " + error.statusText)
+      }
+    )
+  }
+
+  // calling payment page
   paymentCheckout(){
     this.loader = true;
+
     const key = localStorage.getItem("headers")
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${key}`
@@ -111,7 +178,6 @@ export class CartComponent {
     // )
   }
 
-
   getPaymentDetails(){
     this.loader = true;
     const key = localStorage.getItem("headers")
@@ -138,7 +204,8 @@ export class CartComponent {
     )
   }
 
-  removeItem(productid:any){
+  removeItem(productid:any, price:any){
+    console.log("product id :", productid)
     this.loader = true;
     const key = localStorage.getItem("headers")
     const headers = new HttpHeaders({
@@ -150,8 +217,9 @@ export class CartComponent {
         this.loader=false;
         console.log("response", response)
         if(response.message){
+          this.totalPrice=this.totalPrice-price
           alert(response.message)
-          this.router.navigate(['/cart'])
+          window.location.reload()
           if(this.noOfItemsInCart==1){
             window.location.reload();
           }

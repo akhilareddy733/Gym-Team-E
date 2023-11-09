@@ -1,65 +1,22 @@
-<!-- <div class="row justify-content-center text-center">
-    <span class="loader" *ngIf="loader"></span>
-</div>
-
-<section *ngIf="!loader" class="h-100 gradient-custom-2">
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col col-lg-9 col-xl-7">
-                <div class="card">
-                    <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
-                        <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-                        </div>
-                        <div class="ms-3" style="margin-top: 130px;">
-                            <h5>{{profileDetails.name}}</h5>
-                            <p>New York</p>
-                        </div>
-                    </div>
-                    <div class="p-4 text-black" style="background-color: #f8f9fa;">
-                    </div>
-                    <div class="card-body p-4 text-black">
-                        <div class="mb-5">
-                            <p class="lead fw-normal mb-1">About</p>
-                            <div class="p-4" style="background-color: #f8f9fa;">
-                                <p class="font-italic mb-1">Phone no. : {{profileDetails.phone_no}}</p>
-                                <p class="font-italic mb-1">Email : {{profileDetails.email}}</p>
-                                <button routerLink="/update" class="add-to-cart ml-3 mt-3">Update Profile</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-<!-- </section> -->
-
-<!-- {
-    "id": 21,
-    "name": "bharti",
-    "phone_no": "3377664422",
-    "email": "bharti@gmail.com",
-    "gym_membership": false,
-    "fitness": false
-} -->
 
 <!-- ------------------------------------------ new ------------------------------------------------ -->
 <div class="product-details-header">
     <div *ngIf="loader" class="row justify-content-center text-center">
         <div class="col-sm-12 mt-5">
-            <span class="loader" ></span>
+            <span class="loader"></span>
         </div>
     </div>
     <div class="row justify-content-center text-white">
         <div class="col-sm-3 profile-card justify-content-center text-center" *ngIf="!loader">
-            <img src="https://img.freepik.com/free-photo/half-profile-image-handsome-young-caucasian-man-with-good-skin-brown-eyes-black-stylish-hair-stubble-posing-isolated-against-blank-wall-looking-front-him-smiling_343059-4560.jpg" class="rounded-circle mt-3" width="200px" height="210px" alt="">
+            <img src="https://img.freepik.com/free-photo/half-profile-image-handsome-young-caucasian-man-with-good-skin-brown-eyes-black-stylish-hair-stubble-posing-isolated-against-blank-wall-looking-front-him-smiling_343059-4560.jpg"
+                class="rounded-circle mt-3" width="200px" height="210px" alt="">
             <div class="justify-content-end mt-5 edit-btn">
                 <a routerLink="/update"><i class="fa-solid fa-pen-to-square"></i> </a>
             </div>
             <div class="user-details">
-                <div>{{profileDetails.name}}i</div>
+                <div>{{profileDetails.name}}</div>
                 <div>{{profileDetails.email}}</div>
                 <div>{{profileDetails.phone_no}}</div>
             </div>
         </div>
     </div>
-</div>

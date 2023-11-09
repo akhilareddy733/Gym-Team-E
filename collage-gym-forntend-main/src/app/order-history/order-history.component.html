@@ -1,0 +1,23 @@
+<div class="container-fluid dietPlans-main-content">
+  <!-- show order history -->
+   <div class="row justify-content-center text-center">
+    <span class="loader" *ngIf="loader && !orderHistoryEmpty"></span>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 mt-5">
+      <div class="row my-5 justify-content-center" *ngIf="!loader && !orderHistoryEmpty">
+        <div class="card my-2 mx-2" style="width: 15rem;" *ngFor="let items of allOrdersHistory; let i=index">
+          <div class="image-hover-animation">
+            <img class="card-img-top" width="100px" height="150px" src="{{items.product.image}}" alt="Card image cap">
+          </div>
+          <div class="card-body">
+            <p class="card-text text-truncate" style="font-size: 20px; font-weight: bold;">$ {{items.product.price}}</p>
+            <div class="card-title" style="font-size: 16px; font-family: 'Courier New', Courier, monospace;">{{items.product.name}}</div>
+            <div class="card-title text-truncate" style="font-size: 14px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{items.product.description}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

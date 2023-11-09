@@ -28,7 +28,6 @@
                         <input *ngIf="gymMemberShipPay" type="text" id="amount" [disabled]="true" value="100" name="amount" required [(ngModel)]="price" ngModel>
                         
                         <input *ngIf="!gymMemberShipPay" type="text" id="amount" [disabled]="true" value="{{amount}}" name="amount" required [(ngModel)]="amount" ngModel>
-            
                         <input class="pay-button" type="submit" value="Pay" class="btn btn-primary" [disabled]="!paymentform.valid">
                     </form>
                 </div>

@@ -1,78 +1,100 @@
-<div class="" *ngIf="cartEmpty">
-  <header>
-    <h1>My Cart</h1>
-  </header>
-  <div class="empty-cart">
-    <span class=""><i class="fa-brands fa-opencart"></i></span>
+
+
+<div class="container-fluid dietPlans-main-content">
+  <div class="row text-center justify-content-center">
+    <div class="col-sm-6">
+      <div class="empty-cart-section" *ngIf="cartEmpty">
+        <div class="empty-cart">
+          <span class="" style="font-size: 230px;"><i class="fa-brands fa-opencart"></i></span>
+        </div>
+        <div class="empty-cart-text">
+          <span style="font-size: 20px; color: antiquewhite;">Your cart is currently empty</span> 
+        </div>
+        <div class="empty-cart-text">
+          <button routerLink="/product" class="add-to-cart button-btn buy-now-button-btn mx-3 my-5">Buy now</button>
+          <button type="button" style="font-size: 17px!important;" routerLink="/order-history" class="add-to-cart button-btn buy-now-button-btn mx-3 my-5">Order history</button>
+
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="empty-cart-text">
-    <span>Your cart is currently empty</span> 
+  <div class="row justify-content-center text-center">
+    <span class="loader" *ngIf="loader && !cartEmpty"></span>
   </div>
-  <div class="empty-cart-text">
-    <button routerLink="/product" class="add-to-cart ml-3 mt-3">Buy now</button>
-  </div>
-</div>
-<div class="row justify-content-center text-center">
-  <span class="loader" *ngIf="loader && !cartEmpty"></span>
-</div>
-<div class="container" *ngIf="!cartEmpty">
-  <div class="left-container">
-    <div class="cart">
-      <h2>Your Cart</h2>
-      <ul id="cart-items">
-        <div class="row">
-          <div class="col">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">S.no</th>
-                  <th scope="col">Item</th>
-                  <!-- <th scope="col">No. of itmes</th> -->
-                  <th scope="col">Price/One</th>
-                  <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let data of allOrders; let i=index">
-                  <th scope="row">{{i+1}}</th>
-                  <td>
-                    <div class="card card-items border border-white" style="width: 18rem;">
-                      <img class="card-img-top" style="width: 150px;" src="{{data.product.image}}" alt="Card image cap">
-                      <span>{{data.product.name}}</span>
-                      <a href="" class="cat-title">
-                        <h4>{{data.foodname | titlecase}}</h4>
-                      </a>
-                    </div>
-                  </td>
-                  <!-- <td class="mt-3">
-                    <a ><i class="fas fa-minus-square"></i></a> 1
-                    <a ><i class="fas fa-plus-square"></i> </a>
-                  </td> -->
-                  <td class="mt-3">$ {{data.product.price}}</td>
-                  <td><button (click)="removeItem(data.id)" class="add-to-cart ml-3 mt-3">Remove</button></td>
-                </tr>
-              </tbody>
-            </table>
+
+  <!-- show card orders -->
+  <div class="row" *ngIf="!loader && !cartEmpty">
+    <div class="col-sm-8 mt-5">
+      <div class="row my-5 justify-content-center" >
+        <div class="card my-2 mx-2" style="width: 15rem;" *ngFor="let items of allOrders; let i=index">
+          <div class="image-hover-animation">
+            <img class="card-img-top" width="100px" height="150px" src="{{items.product.image}}" alt="Card image cap">
+          </div>
+          <div class="card-body">
+            <p class="card-text text-truncate" style="font-size: 20px; font-weight: bold;">$ {{items.product.price}}</p>
+            <div class="card-title" style="font-size: 16px; font-family: 'Courier New', Courier, monospace;">{{items.product.name}}</div>
+            <div class="card-title text-truncate" style="font-size: 14px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{items.product.description}}</div>
+            <button (click)="removeItem(items.id, items.product.price)" class="button-btn button-hover">Remove</button>
           </div>
         </div>
-      </ul>
+      </div>
     </div>
-  </div>
-  <div class="right-container">
-    <div class="summary">
-      <h2>Cart Summary</h2>
-      <p>Total Items: <span id="total-items">{{noOfItemsInCart}}</span></p>
-      <p>Total Price: $ <span id="total-price">{{totalPrice}}
-          <button (click)="paymentCheckout()"
-            class="add-to-cart ml-3 mt-3">Checkout</button>
-        </span></p>
-      <!-- <p *ngIf="paymentDetails!='' ">Payment status: <span id="total-items">Done</span></p> -->
-    </div>
-    <div class="summary mt-4">
-      <h2>Delivery details</h2>
-      <p>Name: <span id="total-items">{{deliveryDetails.name}}</span></p>
-      <p>Phone: <span id="total-price">{{deliveryDetails.phone_no}}</span></p>
-      <p>Address: <span id="total-price">{{address}} {{addresspincode}}</span></p>
+
+<!-- get address form -->
+    <div class="col-sm-4">
+      <form class="addressForm" #addressForm="ngForm">
+        <button type="button" (click)="addAddressToUser()" class="btn btn-primary" [disabled]="!addressForm.valid">Checkout</button>
+        <button type="button" routerLink="/order-history" class="btn btn-success ml-2">Order history</button>
+
+        <div class="row mt-2">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Address line 1</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Address line1" name="addline1" required [(ngModel)]="addressline1" ngModel>                
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">City</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="City" name="city" required [(ngModel)]="city" ngModel>           
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">State</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="State" name="state" required [(ngModel)]="state" ngModel>           
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Country</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Country" name="country" required [(ngModel)]="country" ngModel>        
+            </div>
+          </div>
+          
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Pincode</label>
+              <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Pincode" name="pincode" required [(ngModel)]="pincode" ngModel>           
+            </div>
+          </div>
+          
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Toral Price : </label>
+              <span style="font-size: 30px; font-family: 'Times New Roman', Times, serif; color:black; font-weight: bolder;"> $ {{totalPrice}} </span>       
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
+
+

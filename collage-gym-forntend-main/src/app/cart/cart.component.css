@@ -1,66 +1,4 @@
-/* Add your CSS styles here */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-}
-
-header {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
-
-.container {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.left-container {
-    /* width: 70%; */
-    padding: 20px;
-}
-
-.cart {
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    padding: 20px;
-}
-
-h2 {
-    font-size: 20px;
-}
-
-.right-container {
-    /* width: 30%; */
-    background-color: #f9f9f9;
-    padding: 20px;
-}
-
-.summary {
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    padding: 20px;
-}
-
-#total-items, #total-price {
-    font-weight: bold;
-}
-
-.add-to-cart {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
+/* loader style */
 .loader {
     width: 48px;
     height: 48px;
@@ -70,7 +8,7 @@ h2 {
     display: inline-block;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
-    margin-top: 200px;
+    margin-top: 300px;
 }
 
 @keyframes rotation {
@@ -82,13 +20,107 @@ h2 {
     }
 } 
 
+/* header background
+.diet-plan-header{
+    width: 100%;
+    height: 100vh;
+    background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)) ,url("https://png.pngtree.com/thumb_back/fh260/background/20201010/pngtree-black-friday-seamless-background-illustration-with-sale-tag-shopping-bag-and-image_407934.jpg");
+    height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
 
-.empty-cart{
-    font-size: 200px;
+.diet-plan-header-title-and-desc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+  }
+  
+  .diet-plan-header-title {
+    font-size: 24px; /* Adjust the font size as needed */
+    margin: 0; /* Remove default margin to align text at the center */
+    margin-top: 300px;
+    font-family: "Montserrat", Sans-serif;
+    color: #FFF;
+  }
+  
+  .diet-plan-header-desc {
+    font-size: 16px; /* Adjust the font size as needed */
+    margin: 0; /* Remove default margin to align text at the center */
+    width: 70%;
+    font-family: Century Gothic;
+    color: #FF9045;
+  }
+  
+
+  /* diet plan header title and desc animation */
+.animate {
+    animation: fadeUp 2s both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(90px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
-.empty-cart-text{
+/* diet plan content */
+.dietPlans-main-content{
+    width: 100%;
+    background-image:url("https://t3.ftcdn.net/jpg/03/36/89/24/360_F_336892491_aZIazKCweTtVXT4BT8I2OxOlNwk1JV7j.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.text-truncate {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%; /* or set a specific width if needed */
+  }
+
+  .button-btn {
+    border: none;
+    outline: 0;
+    padding: 8px;
+    color: white;
+    background-color: #192655;
     text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 10px;
+    text-decoration: none;
+  }
+
+
+  .addressForm{
+    margin-top: 105px !important;
+    margin-left: 0% !important;
+  }
+
+  .button-btn{
+    width: 150px;
+    border-radius: 5px;
+    color:#451952;
+    background-color:cyan!important;
+}
+
+label{
+    color:antiquewhite;
+}
+
+.empty-cart-section{
+    margin-top: 120px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.buy-now-button-btn{
+    font-size: 20px!important;
 }

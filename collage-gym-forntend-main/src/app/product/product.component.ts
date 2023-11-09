@@ -76,11 +76,11 @@ export class ProductComponent {
 
   async addProduct(itemId:any){
 
-    console.log("address local :", localStorage.getItem("address"))
+    // console.log("address local :", localStorage.getItem("address"))
 
-    if(localStorage.getItem("address")=="" || localStorage.getItem("address")=="null"  || localStorage.getItem("address")=="undefined" || localStorage.getItem("address")==null || localStorage.getItem("address")==undefined){
-      await this.inputPrompt1("msg")
-    }
+    // if(localStorage.getItem("address")=="" || localStorage.getItem("address")=="null"  || localStorage.getItem("address")=="undefined" || localStorage.getItem("address")==null || localStorage.getItem("address")==undefined){
+    //   await this.inputPrompt1("msg")
+    // }
 
     // if(this.validAddress!=false){
     //   this.AlertMsg("Please enter a valid address and pincode", 'error')

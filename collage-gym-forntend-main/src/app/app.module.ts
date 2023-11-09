@@ -18,6 +18,9 @@ import { Signup2Component } from './signup2/signup2.component';
 import { PaymentComponent } from './payment/payment.component';
 import { SigninComponent } from './signin/signin.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { DietplanDetailsComponent } from './dietplan-details/dietplan-details.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
+import { ChatbotComponent } from './chatbot/chatbot.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,9 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     Signup2Component,
     SigninComponent,
     ProductDetailsComponent,
+    DietplanDetailsComponent,
+    OrderHistoryComponent,
+    ChatbotComponent,
   ],
   imports: [
     BrowserModule,

@@ -41,6 +41,7 @@ export class UpdateComponent {
       (response)=>{
         this.loader=false;
         this.profileDetails = response;
+        console.log("get profile :", this.profileDetails)
         if(response){
           this.fullname=response.name
           this.username=response.email
@@ -62,8 +63,9 @@ export class UpdateComponent {
       'Authorization': `Bearer ${key}`
     });
     let userNewData = {
-      "name":this.fullname,
-      "phone_no":this.phoneno,
+      "email": this.username,
+      "phone_no": this.phoneno,
+      "name": this.fullname
     }
     this.service.updateProfile(userNewData, headers).subscribe(
       (response)=>{
@@ -77,7 +79,17 @@ export class UpdateComponent {
         }
       },(error)=>{
         console.log(error);
-        alert(error.status + ' ' + error.statusText)
+        console.log(error.error.phone_no)
+        if(error.error.phone_no){
+          alert(error.error.phone_no)
+        }
+        else if(error.error.email){
+          alert(error.error.email)
+        }
+        else{ 
+          alert(error.statusText)
+        }
+        
         this.loader=false;
       }
     )

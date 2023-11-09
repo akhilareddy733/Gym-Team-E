@@ -61,7 +61,11 @@
 <div class="diet-plan-header">
     <div class="diet-plan-header-title-and-desc animate">
         <h5 class="diet-plan-header-title">Healthy Eating Hub: Your Ultimate Diet Plan Resource</h5>
-        <p class="diet-plan-header-desc">Discover the key to a happier, healthier you with our comprehensive diet plan guide. Explore a wide range of expert-curated diet plans, tailored to your specific needs and goals. From weight loss to muscle gain, we've got you covered. Dive into a world of nutritious recipes, expert tips, and personalized meal plans to help you embark on a journey to better health and well-being. Start your transformation today</p>
+        <p class="diet-plan-header-desc">Discover the key to a happier, healthier you with our comprehensive diet plan
+            guide. Explore a wide range of expert-curated diet plans, tailored to your specific needs and goals. From
+            weight loss to muscle gain, we've got you covered. Dive into a world of nutritious recipes, expert tips, and
+            personalized meal plans to help you embark on a journey to better health and well-being. Start your
+            transformation today</p>
     </div>
 </div>
 
@@ -71,12 +75,14 @@
         <div class="mb-3">Calculate BMI</div>
         <form action="" #dietForm="ngForm" (ngSubmit)="getDietPlan()">
             <div class="form-group">
-                <input type="text" #wgt="ngModel" name="height" class="form-control" placeholder="Height (In CM)" [(ngModel)]="height" ngModel required>
+                <input type="text" #wgt="ngModel" name="height" class="form-control" placeholder="Height (In CM)"
+                    [(ngModel)]="height" ngModel required>
             </div>
             <div class="form-group">
-                <input type="text" #hgt="ngModel" name="weight" class="form-control" placeholder="Weight" [(ngModel)]="weight" ngModel required>
+                <input type="text" #hgt="ngModel" name="weight" class="form-control" placeholder="Weight"
+                    [(ngModel)]="weight" ngModel required>
             </div>
-        <input type="submit" [disabled]="dietForm.invalid " value="Calculate" class="btn btn-primary">
+            <input type="submit" [disabled]="dietForm.invalid " value="Calculate" class="btn btn-primary">
         </form>
     </div>
 </div>
@@ -90,34 +96,43 @@
             <div class="row my-5 justify-content-center">
                 <div class="card" style="width: 18rem;">
                     <div class="image-hover-animation">
-                        <img class="card-img-top" height="250px" src="{{items.morningPlanImage}}" alt="Card image cap">
+                        <a routerLink="/dietplan/{{items.id}}">
+                            <img class="card-img-top" height="250px" src="{{items.morningPlanImage}}"
+                                alt="Card image cap">
+                        </a>
                     </div>
                     <div class="card-body">
                         <div class="card-title">BMI : {{items.body_mass_index}}</div>
                         <div class="card-title">Body type : {{items.body}}</div>
-                      <p class="card-text text-truncate">{{items.morningPlan}}</p>
+                        <p class="card-text text-truncate">{{items.morningPlan}}</p>
                     </div>
-                  </div>
-                  <div class="card mx-5" style="width: 18rem;">
+                </div>
+                <div class="card mx-5" style="width: 18rem;">
                     <div class="image-hover-animation">
-                        <img class="card-img-top" height="250px" src="{{items.afternoonPlanImage}}" alt="Card image cap">
+                        <a routerLink="/dietplan/{{items.id}}">
+                            <img class="card-img-top" height="250px" src="{{items.afternoonPlanImage}}"
+                                alt="Card image cap">
+                        </a>
                     </div>
                     <div class="card-body">
                         <div class="card-title">BMI : {{items.body_mass_index}}</div>
                         <div class="card-title">Body type : {{items.body}}</div>
-                      <p class="card-text text-truncate">{{items.nightPlan}}</p>
+                        <p class="card-text text-truncate">{{items.nightPlan}}</p>
                     </div>
-                  </div>
-                  <div class="card" style="width: 18rem;">
+                </div>
+                <div class="card" style="width: 18rem;">
                     <div class="image-hover-animation">
-                        <img class="card-img-top" height="250px" src="{{items.nightPlanImage}}" alt="Card image cap">
+                        <a routerLink="/dietplan/{{items.id}}">
+                            <img class="card-img-top" height="250px" src="{{items.nightPlanImage}}"
+                                alt="Card image cap">
+                        </a>
                     </div>
                     <div class="card-body">
                         <div class="card-title">BMI : {{items.body_mass_index}}</div>
                         <div class="card-title">Body type : {{items.body}}</div>
-                      <p class="card-text text-truncate">{{items.ni}}</p>
+                        <p class="card-text text-truncate">{{items.ni}}</p>
                     </div>
-                  </div>
+                </div>
             </div>
         </div>
     </div>

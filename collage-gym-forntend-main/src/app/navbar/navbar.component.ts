@@ -20,10 +20,13 @@ export class NavbarComponent {
   allOrders:any;
   paymentStatus:any=false;
   location:any="";
+  currentLocation:any;
 
   constructor(private router: Router, private service:AllServicesService){
     if(localStorage.getItem("isUserLoggedIn")=="true"){
       this.isUserLoggedIn=true;
+      this.currentLocation=window.location.pathname
+      console.log("location :", this.currentLocation)
     }
     if(localStorage.getItem("gymMembership")=="true"){
       this.isUserMembership=true;
@@ -47,8 +50,8 @@ export class NavbarComponent {
         }
       })
     }
+    
   }
-
 
   
   signout(){

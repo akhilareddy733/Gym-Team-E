@@ -10,6 +10,7 @@ export class AllServicesService {
   url = "https://gymproject-404a72ac42b8.herokuapp.com"
 
   paymentData:any;
+  addressDetails:any ={};
 
   constructor(private http:HttpClient) { }
 
@@ -46,7 +47,7 @@ export class AllServicesService {
   }
   
   getDietPlans(params:any, headers:any){
-    return this.http.get<any>(`${this.url}/gym/filtered-dietplans/`, {params, headers})
+    return this.http.get<any>(`${this.url}/gym/diet/`, {params, headers})
   }
   
   getVideoExcercise(headers:any){
@@ -57,8 +58,8 @@ export class AllServicesService {
     return this.http.get<any>(`${this.url}/account/profile/`, {headers})
   }
   
-  updateProfile(daa:any, headers:any){
-    return this.http.put<any>(`${this.url}/account/update-profile/`, {headers})
+  updateProfile(data:any, headers:any){
+    return this.http.put<any>(`${this.url}/account/update-profile/`, data, {headers})
   }
 
   getPaymentStatus(headers:any){
@@ -76,5 +77,20 @@ export class AllServicesService {
   deleAllAfterPayment(headers:any){
     return this.http.delete<any>(`${this.url}/ecomerce/order/`, {headers});
   }
+
+  saveOrdersToHistory(data:any, headers:any){
+    return this.http.post<any>(`${this.url}/ecomerce/order/`, data, {headers});
+  }
+
+  getOrderHistory(headers:any){
+    return this.http.get<any>(`${this.url}/ecomerce/history/`, {headers});
+  }
+  
+  saveAddressToUser(addressDetails:any, headers:any){
+    return this.http.put<any>(`${this.url}/account/update-profile/`, addressDetails, {headers});
+  }
+
+
+
 
 }

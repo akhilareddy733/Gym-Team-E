@@ -13,6 +13,8 @@ import { Signup2Component } from './signup2/signup2.component';
 import { PaymentComponent } from './payment/payment.component';
 import { SigninComponent } from './signin/signin.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { DietplanDetailsComponent } from './dietplan-details/dietplan-details.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch:'full'},
@@ -27,6 +29,8 @@ const routes: Routes = [
   {path: 'payment', component:PaymentComponent, canActivate:[authGuardGuard]},
   {path: 'video', component:VideoComponent, canActivate:[authGuardGuard,gymMembershipGuard]},
   {path: 'dietplan', component:DietplanComponent, canActivate:[authGuardGuard,gymMembershipGuard]},
+  {path: 'dietplan/:dietplanid', component:DietplanDetailsComponent, canActivate:[authGuardGuard,gymMembershipGuard]},
+  {path: 'order-history', component:OrderHistoryComponent, canActivate:[authGuardGuard,gymMembershipGuard]},
 ];
 
 @NgModule({

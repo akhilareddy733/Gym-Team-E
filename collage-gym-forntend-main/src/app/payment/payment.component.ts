@@ -17,10 +17,14 @@ export class PaymentComponent {
   amount:any;
   expirtydate:any;
   price:any=100;
+  shoppingPrice:any;
   gymMemberShipPay:any=true;
+  addressDetails:any;
 
   constructor(private service:AllServicesService, private router:Router){
     this.paymentData=service.paymentData
+    this.addressDetails=service.addressDetails
+    console.log("addres details :", this.addressDetails)
   }
 
   ngOnInit(){
@@ -110,7 +114,7 @@ export class PaymentComponent {
       (response)=>{
         this.loader=false;
         if(response){
-          this.price=this.service.paymentData.price
+          this.shoppingPrice=this.service.paymentData.price
         }
       },(error)=>{
         alert(error.status + " " + error.statusText)
@@ -126,10 +130,11 @@ export class PaymentComponent {
     });
 
     const data = {
-      "price":this.price,
+      "order":this.service.paymentData.order,
+      "price":this.service.paymentData.price,
       "card_no":this.cardno,
       "subscription":"monthly",
-      "expiry_date":null,
+      "expiry_date":this.expirtydate,
       "cvv":this.cvv
     }
     
@@ -137,29 +142,35 @@ export class PaymentComponent {
 
     this.router.navigate(['/payment'])
 
-    this.service.paymentCheckout(data, headers).subscribe(
-      (response)=>{
-        this.loader=false;
-        if(response){
-          localStorage.setItem("paymentStatus", "true")
-          alert(response.message)
-          alert("Your payment id :" + " " + response.data.id)
-          alert("Your order is successfull")
-          this.loader=true;
-          this.deleteAllCartItems();
-          setTimeout(() => {
-            this.router.navigate(['/home']).then(() => {
-              window.location.reload();
-            });
-          }, 2000);
+    try{
+      // order post api
+      this.service.paymentCheckout(data, headers).subscribe(
+        async (response)=>{
+          this.loader=false;
+          if(response){
+            localStorage.setItem("paymentStatus", "true")
+            alert(response.message)
+            alert("Your payment id :" + " " + response.data.id)
+            alert("Your order is successfull")
+            this.loader=true;
+            this.deleteAllCartItems();
+            setTimeout(() => {
+              this.router.navigate(['/home']).then(() => {
+                window.location.reload();
+              });
+            }, 2000);
+          }
+        },(error)=>{
+          console.log("error is:", error)
+          alert(error.status + " " + error.statusText)
         }
-      },(error)=>{
-        console.log("error is:", error)
-        alert(error.status + " " + error.statusText)
-      }
-    )
+      )
+    }catch{
+
+    }
   }
 
+  // delete from cart
   deleteAllCartItems(){
     this.loader = true;
     const key = localStorage.getItem("headers")
@@ -180,5 +191,33 @@ export class PaymentComponent {
       }
     )
   }
+
+  // save order history
+  // saveOrdersToHistory(){
+  //   this.loader = true;
+  //   const key = localStorage.getItem("headers")
+  //   const headers = new HttpHeaders({
+  //     'Authorization': `Bearer ${key}`
+  //   });
+
+  //   const orderData: any = {
+  //     product: 4,  
+  //   };
+    
+  //   this.service.saveOrdersToHistory(orderData, headers).subscribe(
+  //     (response)=>{
+  //       this.loader=false;
+  //       if(response){
+  //         this.loader=true;
+  //         console.log("order saved to history", response)
+  //       }
+  //     },(error)=>{
+  //       console.log("error is:", error)
+  //       alert(error.status + " " + error.statusText)
+  //     }
+  //   )
+  // }
+
+
 
 }

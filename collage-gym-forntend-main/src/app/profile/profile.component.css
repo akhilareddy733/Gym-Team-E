@@ -85,4 +85,12 @@
     text-align: right;
 }
 
+.order-history-btn{
+    margin-top: 100px;
+}
 
+.button-btn{
+    font-size: 15px!important;
+    width: 50%;
+    border-radius: 10px;
+}

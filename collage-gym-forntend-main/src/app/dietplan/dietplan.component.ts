@@ -47,7 +47,7 @@ export class DietplanComponent {
 
 
     const params = {
-      body_mass_index__lt_18: Number(this.bmivalue.toFixed(0))
+      body_mass_index: Number(this.bmivalue.toFixed(0))
     };
 
     console.log("params: " + params);

@@ -37,11 +37,10 @@ export class VideoComponent {
       'Authorization': `Bearer ${key}`
     });
     
+    this.loader=false;
     this.service.getVideoExcercise(headers).subscribe(
       (response)=>{
-        this.loader=false;
         this.videoExcersiseDetails = response;
-        console.log(response);
         if(response.id){
           // this.products = response
         }
