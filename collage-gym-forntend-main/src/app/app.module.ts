@@ -21,6 +21,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { DietplanDetailsComponent } from './dietplan-details/dietplan-details.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
+import { DeitplanDetailsComponent } from './deitplan-details/deitplan-details.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ChatbotComponent } from './chatbot/chatbot.component';
     DietplanDetailsComponent,
     OrderHistoryComponent,
     ChatbotComponent,
+    DeitplanDetailsComponent,
   ],
   imports: [
     BrowserModule,

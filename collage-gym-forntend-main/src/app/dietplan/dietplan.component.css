@@ -84,3 +84,9 @@
     text-overflow: ellipsis;
     width: 100%; /* or set a specific width if needed */
   }
+
+img{
+    background-position:center; 
+    background-size: cover;
+    background-repeat: no-repeat;
+}

@@ -30,7 +30,7 @@ const routes: Routes = [
   {path: 'video', component:VideoComponent, canActivate:[authGuardGuard,gymMembershipGuard]},
   {path: 'dietplan', component:DietplanComponent, canActivate:[authGuardGuard,gymMembershipGuard]},
   {path: 'dietplan/:dietplanid', component:DietplanDetailsComponent, canActivate:[authGuardGuard,gymMembershipGuard]},
-  {path: 'order-history', component:OrderHistoryComponent, canActivate:[authGuardGuard,gymMembershipGuard]},
+  {path: 'order-history', component:OrderHistoryComponent, canActivate:[authGuardGuard]},
 ];
 
 @NgModule({

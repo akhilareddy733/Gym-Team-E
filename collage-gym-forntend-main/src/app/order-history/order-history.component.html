@@ -1,21 +1,83 @@
 <div class="container-fluid dietPlans-main-content">
   <!-- show order history -->
-   <div class="row justify-content-center text-center">
-    <span class="loader" *ngIf="loader && !orderHistoryEmpty"></span>
+  <div class="row justify-content-center text-center">
+    <span class="loader" *ngIf="loader"></span>
   </div>
 
-  <div class="row">
+
+  <!-- <div class="row" *ngIf="!loader">
     <div class="col-sm-12 mt-5">
       <div class="row my-5 justify-content-center" *ngIf="!loader && !orderHistoryEmpty">
-        <div class="card my-2 mx-2" style="width: 15rem;" *ngFor="let items of allOrdersHistory; let i=index">
-          <div class="image-hover-animation">
-            <img class="card-img-top" width="100px" height="150px" src="{{items.product.image}}" alt="Card image cap">
+        <div class="row" *ngFor="let order of allOrdersHistory; let i=index">
+          <div class="row" *ngFor="let items of order.products; let j=index">
+            <div class="col-sm-4 mx-3">
+              <div class="card my-2 mx-2" style="width: 15rem; height: 400px;">
+                <div class="image-hover-animation">
+                  <img class="card-img-top" width="100px" height="150px" src="{{ items.image }}" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                  <p class="card-text text-truncate" style="font-size: 20px; font-weight: bold;">$ {{ items.price }}</p>
+                  <div class="card-title" style="font-size: 16px; font-family: 'Courier New', Courier, monospace;">{{
+                    items.name }}</div>
+                  <div class="card-title text-truncate"
+                    style="font-size: 14px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                    {{ items.description }}</div>
+                  <div class="card-title text-truncate"
+                    style="font-size: 14px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                    Order id : {{ order.id }}</div>
+                </div>
+              </div>
+            </div>            
           </div>
-          <div class="card-body">
-            <p class="card-text text-truncate" style="font-size: 20px; font-weight: bold;">$ {{items.product.price}}</p>
-            <div class="card-title" style="font-size: 16px; font-family: 'Courier New', Courier, monospace;">{{items.product.name}}</div>
-            <div class="card-title text-truncate" style="font-size: 14px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{items.product.description}}</div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div> -->
+
+
+  <div class="row" *ngIf="!loader">
+    <div class="col-sm-12 mt-5">
+      <div class="row my-5 justify-content-center" *ngIf="!loader && !orderHistoryEmpty">
+        <div class="row" *ngFor="let order of allOrdersHistory; let i=index">
+          <div class="row" *ngFor="let items of order.products; let j=index">
+            <div class="col-sm-4 mx-3">
+              <div class="card my-2 mx-2" style="width: 15rem; height: 400px;">
+                <div class="image-hover-animation">
+                  <img class="card-img-top" width="100px" height="150px" src="{{ items.image }}" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                  <p class="card-text text-truncate" style="font-size: 20px; font-weight: bold;">$ {{ items.price }}</p>
+                  <div class="card-title" style="font-size: 16px; font-family: 'Courier New', Courier, monospace;">{{
+                    items.name }}</div>
+                  <div class="card-title text-truncate"
+                    style="font-size: 14px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                    {{ items.description }}</div>
+                  <div class="card-title text-truncate"
+                    style="font-size: 14px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                    Order id : {{ order.id }}</div>
+                </div>
+              </div>
+            </div>            
           </div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row text-center justify-content-center" *ngIf="!loader">
+    <div class="col-sm-6">
+      <div class="empty-cart-section" *ngIf="orderHistoryEmpty">
+        <div class="empty-cart">
+          <span class="" style="font-size: 230px;"><i class="fa-brands fa-opencart"></i></span>
+        </div>
+        <div class="empty-cart-text">
+          <span style="font-size: 20px; color: antiquewhite;">Order history is empty</span>
+        </div>
+        <div class="empty-cart-text">
+          <button routerLink="/product" class="add-to-cart button-btn buy-now-button-btn mx-3 my-5">Buy now</button>
         </div>
       </div>
     </div>

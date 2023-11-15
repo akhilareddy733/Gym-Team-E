@@ -20,6 +20,8 @@ export class PaymentComponent {
   shoppingPrice:any;
   gymMemberShipPay:any=true;
   addressDetails:any;
+  
+  paymentData_orderOrMem:any;
 
   constructor(private service:AllServicesService, private router:Router){
     this.paymentData=service.paymentData
@@ -129,22 +131,37 @@ export class PaymentComponent {
       'Authorization': `Bearer ${key}`
     });
 
-    const data = {
-      "order":this.service.paymentData.order,
-      "price":this.service.paymentData.price,
-      "card_no":this.cardno,
-      "subscription":"monthly",
-      "expiry_date":this.expirtydate,
-      "cvv":this.cvv
+    // if order payment 
+
+
+    // if membership payment 
+    if(localStorage.getItem("paymentStatus")=="true"){
+      this.paymentData_orderOrMem = {
+        "order":this.service.paymentData.order,
+        "price":this.service.paymentData.price,
+        "card_no":this.cardno,
+        "subscription":"monthly",
+        "expiry_date":this.expirtydate,
+        "cvv":this.cvv
+      }
     }
-    
-    this.service.paymentData=data;
+    else{
+      this.paymentData_orderOrMem = {
+        "price":this.price,
+        "card_no":this.cardno,
+        "subscription":"monthly",
+        "expiry_date":this.expirtydate,
+        "cvv":this.cvv
+      }
+    }
+ 
+    this.service.paymentData=this.paymentData_orderOrMem;
 
     this.router.navigate(['/payment'])
 
     try{
       // order post api
-      this.service.paymentCheckout(data, headers).subscribe(
+      this.service.paymentCheckout(this.paymentData_orderOrMem, headers).subscribe(
         async (response)=>{
           this.loader=false;
           if(response){

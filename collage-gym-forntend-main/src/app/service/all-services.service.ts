@@ -91,6 +91,13 @@ export class AllServicesService {
   }
 
 
+  // get chat answers
+    
+  getChatAnswers(headers:any){
+    return this.http.get<any>(`${this.url}/chatbot/chat/`, {headers});
+  }
+
+
 
 
 }
